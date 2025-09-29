@@ -8,6 +8,7 @@ Using the smart contract functions, a patient can:
 3. Modify, update, or delete the record based on the new information
 4. Grant temporary access to medical operators to perform these actions and revoke it at any time
 
+A smart contract can be deployed using the script.
 
 Only the patient and the authorized entities can access the record. No one, except the patient, can update or delete it, and the patient can revoke access at any time. It secures patient data, minimizes the risk of manipulation, and significantly reduces operational costs.
 
