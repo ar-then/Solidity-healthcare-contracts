@@ -1,28 +1,14 @@
-REMIX DEFAULT WORKSPACE
+Consent management tool v.0.0.1
 
-Remix default workspace is present when:
-i. Remix loads for the very first time 
-ii. A new workspace is created with 'Default' template
-iii. There are no files existing in the File Explorer
+A patient can use blockchain to secure access to the medical records URIs 
 
-This workspace contains 3 directories:
+Using the smart contract functions, a patient can:
+1. Create an onchain pointer that secures access to the medical record, limiting it to the record's owner (a patient)
+2. Fetch the record at any time using the onchain pointer
+3. Modify, update, or delete the record based on the new information
+4. Grant temporary access to medical operators to perform these actions and revoke it at any time
 
-1. 'contracts': Holds three contracts with increasing levels of complexity.
-2. 'scripts': Contains four typescript files to deploy a contract. It is explained below.
-3. 'tests': Contains one Solidity test file for 'Ballot' contract & one JS test file for 'Storage' contract.
 
-SCRIPTS
+Only the patient and the authorized entities can access the record. No one, except the patient, can update or delete it, and the patient can revoke access at any time. It secures patient data, minimizes the risk of manipulation, and significantly reduces operational costs.
 
-The 'scripts' folder has four typescript files which help to deploy the 'Storage' contract using 'web3.js' and 'ethers.js' libraries.
-
-For the deployment of any other contract, just update the contract name from 'Storage' to the desired contract and provide constructor arguments accordingly 
-in the file `deploy_with_ethers.ts` or  `deploy_with_web3.ts`
-
-In the 'tests' folder there is a script containing Mocha-Chai unit tests for 'Storage' contract.
-
-To run a script, right click on file name in the file explorer and click 'Run'. Remember, Solidity file must already be compiled.
-Output from script will appear in remix terminal.
-
-Please note, require/import is supported in a limited manner for Remix supported modules.
-For now, modules supported by Remix are ethers, web3, swarmgw, chai, multihashes, remix and hardhat only for hardhat.ethers object/plugin.
-For unsupported modules, an error like this will be thrown: '<module_name> module require is not supported by Remix IDE' will be shown.
+Note: Realizing these contracts on Ethereum requires large expenses due to the gas fees. Using other EVM blockchains (such as Arbitrum or Polygon) or those optimized specifically for record storage is recommended.
