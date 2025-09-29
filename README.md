@@ -1,7 +1,8 @@
 # Solidity contracts for healthcare
 
+Here, we'll explore smart contracts that can be used in healthcare to optimize and secure patient record management.
 
-## Consent management tool v.0.0.1
+## Patient consent management tool v.0.0.1
 
 A patient can use blockchain to secure access to the medical records URIs 
 
