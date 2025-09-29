@@ -102,31 +102,6 @@
 				"inputs": [
 					{
 						"indexed": true,
-						"internalType": "address",
-						"name": "patient",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "bool",
-						"name": "approved",
-						"type": "bool"
-					}
-				],
-				"name": "OperatorApproved",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
 						"internalType": "uint256",
 						"name": "recordId",
 						"type": "uint256"
@@ -321,30 +296,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "operatorApproval",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -418,24 +369,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "approved",
-						"type": "bool"
-					}
-				],
-				"name": "setOperatorApproval",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "uint256",
 						"name": "recordId",
 						"type": "uint256"
@@ -453,12 +386,11 @@
 			}
 		],
 		"devdoc": {
-			"details": "Store only pointers (e.g., IPFS CIDs or encrypted URIs). Do NOT store raw medical data on-chain.",
 			"kind": "dev",
 			"methods": {
 				"createRecord(string)": {
 					"params": {
-						"uri": "pointer to encrypted record (IPFS CID, encrypted URL, etc.)"
+						"uri": "pointer to encrypted record"
 					},
 					"returns": {
 						"recordId": "newly created record id"
@@ -466,7 +398,7 @@
 				},
 				"grantAccess(uint256,address,uint256)": {
 					"params": {
-						"expiresAt": "Unix timestamp when access expires (0 for immediate revoke). Must be in the future.",
+						"expiresAt": "Unix timestamp shows when access expires (set 0 for immediate revoke). Must be in the future.",
 						"provider": "The provider address (e.g., provider's wallet)",
 						"recordId": "The record to grant access to"
 					}
@@ -479,25 +411,28 @@
 			"kind": "user",
 			"methods": {
 				"createRecord(string)": {
-					"notice": "Create a new record pointer (only pointer stored)"
+					"notice": "Create a new record pointer using encrypted record URI (only pointer stored)"
+				},
+				"currentRecordCounter()": {
+					"notice": "Check the current record counter"
 				},
 				"getRecordUri(uint256)": {
-					"notice": "Get the record pointer (uri). Returns uri only if caller is owner or has access."
+					"notice": "Get the record uri (the record of interest). Returns uri only if caller is owner or has access."
 				},
 				"grantAccess(uint256,address,uint256)": {
-					"notice": "Grant access to provider for a record until expiresAt (unix timestamp). Only owner/operator."
+					"notice": "Grant access to provider for a record, for specific time. Only owner/operator can grant."
 				},
 				"hasAccess(uint256,address)": {
 					"notice": "Check whether a provider currently has access"
 				},
 				"removeRecord(uint256)": {
-					"notice": "Remove a record pointer. Only the owner can remove."
+					"notice": "Remove a record pointer. Only owner can remove."
 				},
 				"requestAccess(uint256)": {
 					"notice": "Provider can call this to request access (optional). Emits event so patient/operator can see requests."
 				},
 				"revokeAccess(uint256,address)": {
-					"notice": "Revoke access to provider for a record. Only owner/operator."
+					"notice": "Revoke access to provider for a record. Only owner/operator can remove."
 				},
 				"updateRecord(uint256,string)": {
 					"notice": "Update record pointer. Only owner or approved operator can update."
@@ -524,11 +459,11 @@
 	},
 	"sources": {
 		"contracts/Contract.sol": {
-			"keccak256": "0xc8301990efe15b50eea1a31b819f0be172af04a7962da241f0dee9d6c14d1ee2",
+			"keccak256": "0xa1f759c5a857397eec16e4b2d90636875f5a2fc10aba630cf4602e38a7d62082",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://61b07f99af487452890971d11e835d90830dcc13574bf88c38f52ff14a237bdd",
-				"dweb:/ipfs/QmVa2o8p7QsLQvg6T6262ndQbF4srZg9t2YUA6EDZtYH1e"
+				"bzz-raw://039de2a0c5035287300d27a08b118fa0ae36b418c7496d6215c9a6c389f2676c",
+				"dweb:/ipfs/QmXNCNo9evdf2csJpNAxyfAeka7jD2wZenTC6bBBhHVg1F"
 			]
 		}
 	},
